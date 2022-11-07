@@ -1,10 +1,8 @@
 #include <iostream>
-#include "Data/vec3.h"
 #include "Data/color.h"
 #include "Data/ray.h"
 #include "Data/vec3.h"
 
-#include <iostream>
 bool hit_sphere(const point3& center, double radius, const ray& r) {
     vec3 oc = r.origin() - center;
     auto a = dot(r.direction(), r.direction());
@@ -25,15 +23,6 @@ color ray_color(const ray& r) {
 int main() {
 
     // Image
-    const auto aspect_ratio = 16.0 / 9.0;
-    const int image_width = 400;
-    const int image_height = static_cast<int>(image_width / aspect_ratio);
-
-    // Camera
-
-    auto viewport_height = 2.0;
-    auto viewport_width = aspect_ratio * viewport_height;
-    auto focal_length = 1.0;
     const auto aspect_ratio = 16.0 / 9.0;
     const int image_width = 400;
     const int image_height = static_cast<int>(image_width / aspect_ratio);
