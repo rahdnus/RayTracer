@@ -1,2 +1,2 @@
 all:
-	g++ -Isrc/data -Isrc/object src/main.cpp -o ray.exe
+	g++ -Isrc -Isrc/data -Isrc/object src/main.cpp -o ray.exe
