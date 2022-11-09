@@ -24,7 +24,11 @@ class vec3{
     vec3 operator-() const { return vec3(-e[0], -e[1], -e[2]); }
     double operator[](int i) const { return e[i]; }
     double& operator[](int i) { return e[i]; }
-
+    bool near_zero() const {
+        // Return true if the vector is close to zero in all dimensions.
+        const auto s = 1e-8;
+        return (fabs(e[0]) < s) && (fabs(e[1]) < s) && (fabs(e[2]) < s);
+    }
     vec3& operator+=(const vec3 &v) {
         e[0] += v.e[0];
         e[1] += v.e[1];
@@ -111,7 +115,9 @@ vec3 random_in_hemisphere(const vec3& normal) {
     else
         return -in_unit_sphere;
 }
-
+inline vec3 reflect(const vec3& v, const vec3& n) {
+    return v - 2*dot(v,n)*n;
+}
 using point3 = vec3;  
 using color = vec3;   
 #endif
